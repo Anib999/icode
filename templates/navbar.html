@@ -1,0 +1,22 @@
+{% load static %}
+<header class="navbar-container">
+  <div>
+    <form class="header__search" method="get" action="{% url 'index' %}">
+      <input name="q" placeholder="Filter By All.." value="{{queryString}}" />
+      <a href="{% url 'index' %}"><i class="fa fa-close"></i></a>
+    </form>
+  </div>
+  <div>
+    <img
+      src="{% static 'images/logo.jpg' %}"
+      alt=""
+      srcset=""
+      style="width: 40px"
+    />
+  </div>
+  <div>
+    <a href="{% url 'index' %}">Home</a> |
+    <a href="{% url 'storeIndustryType' %}">Industry</a> |
+    <a href="{% url 'storeCompanyDetails' %}">Company</a>
+  </div>
+</header>

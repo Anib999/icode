@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% block content %}
+
+{% include 'industryapp/filterindustry.html' %}
+
+{% for company, companyDet in industryWithCompany.items %} 
+{% if companyDet %}
+<div class="contentContainer">
+    <div class="contentContainerHead">
+        <h3 class="contentContainerTitle">
+            {{company}}
+        </h3>
+    </div>
+    <div class="contentContainerBody">
+        <input class="individualSearch floatRight" data-target="{{company.split|join:""}}" placeholder="Search.." />
+        <table class="indexTbl {{company.split|join:""}}">
+        <thead>
+            <th>Company Name</th>
+            <th>Owner Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Contact No</th>
+            <th>Action</th>
+        </thead>
+        {% for com in companyDet %}
+        <tr>
+            <td>{{com.company_name}}</td>
+            <td>{{com.owner_name}}</td>
+            <td>{{com.address}}</td>
+            <td>{{com.email_address}}</td>
+            <td>{{com.contact_no}}</td>
+            <td>
+            <a class="button primary-button" href="{% url 'editCompanyDetails' com.cid %}">
+                <i class="fa fa-pencil-square-o"></i>
+            </a>
+            <a class="button danger-button" href="{% url 'deleteCompanyDetails' com.cid %}">
+                <i class="fa fa-trash-o"></i>
+            </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+{% endif %} {% endfor %} {% endblock content %}

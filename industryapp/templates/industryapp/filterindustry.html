@@ -1,0 +1,16 @@
+<form id="smallQueryFilter" action="{% url 'index' %}" method="get">
+    <div>
+        <label for="">Filter By Industry: </label>
+    </div>
+    <div class="select small-select">
+        <select name="filterByIndustry" id="filterByIndustry">
+            <option value="">Select</option>
+            <option value="0">All</option>
+            {% for industry in industryList %}
+            <option value="{{industry.industry_name}}">
+              {{industry.industry_name}}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+</form>

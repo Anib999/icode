@@ -1,0 +1,39 @@
+{% extends 'main.html' %} {% block content %}
+
+<div class="contentContainer">
+  <div class="contentContainerHead">
+    <h3 class="contentContainerTitle">Industry Details</h3>
+  </div>
+  <div class="contentContainerBody">
+    <div class="">
+      <div class="">
+        <form method="post" class="formNew" autocomplete="off">
+          {% csrf_token %}
+
+          <div class="form-field">
+            <label for="industry_name">Industry Name: </label>
+            <input
+              class="form-control"
+              type="text"
+              name="industry_name"
+              placeholder="Industry Name.."
+              required
+              value="{{industrySingle.industry_name}}"
+            />
+          </div>
+
+          <input
+            id="form-button"
+            class="button primary-outline-button btn-small-width floatRight"
+            type="submit"
+            value="{{butName}}"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'industryapp/industrytable.html' %}
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+<div class="contentContainer">
+    <div class="contentContainerHead">
+        <h3 class="contentContainerTitle">Edit industry details</h3>
+    </div>
+    <div class="contentContainerBody">
+        <table class="indexTbl">
+            <thead>
+                <th>Industry Name</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                {% for industry in industryList %}
+                <tr>
+                    <td>{{industry.industry_name}}</td>
+                    <td>
+                        <a class="button primary-button" href="{% url 'editIndustryType' industry.id %}">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

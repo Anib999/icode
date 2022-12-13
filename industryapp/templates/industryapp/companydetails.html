@@ -1,0 +1,111 @@
+{% extends 'main.html' %} {% block content %}
+
+<div class="contentContainer">
+  <div class="contentContainerHead">
+    <h3 class="contentContainerTitle">Company Details</h3>
+  </div>
+  <div class="contentContainerBody">
+    <div class="">
+      <div class="">
+        <form method="post" class="formNew" autocomplete="off">
+          {% csrf_token %}
+
+          <div class="form-field">
+            <label for="company_name">Company Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="company_name"
+              placeholder="Company Name.."
+              required
+              value="{{singleCompanyDetails.company_name}}"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="owner_name">Owner Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="owner_name"
+              placeholder="Owner Name.."
+              required
+              value="{{singleCompanyDetails.owner_name}}"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="address">Address</label>
+            <input
+              class="form-control"
+              type="text"
+              name="address"
+              placeholder="Address.."
+              required
+              value="{{singleCompanyDetails.address}}"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="email_address">Email</label>
+            <input
+              class="form-control"
+              type="email"
+              name="email_address"
+              placeholder="Email.."
+              required
+              value="{{singleCompanyDetails.email_address}}"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contact_no">Contact No</label>
+            <input
+              class="form-control"
+              type="text"
+              name="contact_no"
+              placeholder="0000000000"
+              required
+              maxlength="10"
+              pattern="\d*"
+              value="{{singleCompanyDetails.contact_no}}"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="industrytype">Industry Name</label>
+            <div class="select">
+              <select
+              class="form-control"
+              name="industrytype"
+              id="industrytype"
+              required
+            >
+              {% for industry in industryList %}
+              {% if singleCompanyDetails.industrytype.id == industry.id  %}
+              <option value="{{industry.id}}" selected>
+                {{industry.industry_name}}
+              </option>
+              {% else %}
+              <option value="{{industry.id}}">
+                {{industry.industry_name}}
+              </option>
+              {% endif %}
+              {% endfor %}
+            </select>
+            </div>
+          </div>
+
+          <input
+            id="form-button"
+            class="button primary-button btn-small-width floatRight"
+            type="submit"
+            value="{{butName}}"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
